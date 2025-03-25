@@ -16,6 +16,11 @@ Route::get('/tour-detail/{id}', [ToursController::class, 'tourDetails'])->name('
 Route::post('/bookings', [ToursController::class, 'store'])->name('tour.bookings.store');
 Route::post('/tour/{tourId}/review', [ToursController::class, 'storeReview'])->name('tour.review.store');
 
+Route::get('/destinations', [HomeController::class, 'destinations'])->name('pages.destinations');
+Route::get('/destinations/{id}', [HomeController::class, 'showDestination'])->name('pages.destination.show');
+Route::get('/hotels', [HomeController::class, 'getHotels'])->name('pages.hotels');
+Route::get('/hotels/{id}', [HomeController::class, 'showHotelDetails'])->name('pages.hotel-details.show');
+Route::post('/hotel/booking/store', [HomeController::class, 'hotelBooking'])->name('hotel.booking.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

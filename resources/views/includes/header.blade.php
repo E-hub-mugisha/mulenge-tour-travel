@@ -24,14 +24,10 @@
                                         
                                     </li>
                                     <li>
-                                        <a href="#">Hotel Package</a>
+                                        <a href="{{ route('pages.destinations') }}">Destinations</a>
                                     </li>
-                                    <li class="menu-item-has-children"><a href="blog-grid.html">Blogs</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-grid.html">Blog Grid</a></li>
-                                            <li><a href="blog-standard.html">Blog Standard</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                        </ul>
+                                    <li><a href="{{ route('pages.hotels') }}">Hotels</a>
+                                        
                                     </li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>

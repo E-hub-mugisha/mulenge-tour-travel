@@ -352,7 +352,7 @@
             <div class="col-xl-4 col-lg-4 col-md-6">
                 <div class="tg-listing-card-item tg-listing-su-card-item mb-25">
                     <div class="tg-listing-card-thumb fix mb-25 p-relative">
-                        <a href="tour-details.html">
+                        <a href="{{ route('pages.tour.details', $tour->id ) }}">
                             <img class="tg-card-border w-100" src="{{ asset('assets/pages/img/listing/su/listing-1.jpg')}}" alt="listing">
                             <span class="tg-listing-item-price-discount">Featured</span>
                         </a>
@@ -386,7 +386,7 @@
                                 12 Guests
                             </span>
                         </div>
-                        <h4 class="tg-listing-card-title mb-10"><a href="tour-details.html">{{ $tour->name }}</a></h4>
+                        <h4 class="tg-listing-card-title mb-10"><a href="{{ route('pages.tour.details', $tour->id ) }}">{{ $tour->name }}</a></h4>
                         <div class="tg-listing-card-duration-tour mb-20">
                             <span class="tg-listing-card-duration-map">
                                 <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -413,7 +413,7 @@
             @endforeach
             <div class="col-12">
                 <div class="text-center mt-15">
-                    <a href="tour-grid-1.html" class="tg-btn tg-btn-transparent tg-btn-su-transparent">See More Tours</a>
+                    <a href="{{ route('pages.tours' ) }}" class="tg-btn tg-btn-transparent tg-btn-su-transparent">See More Tours</a>
                 </div>
             </div>
         </div>

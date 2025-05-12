@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AccommodationType;
 use App\Models\Activity;
+use App\Models\Booking;
+use App\Models\Tour;
 use App\Models\TransportationType;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -13,7 +16,10 @@ class AdminController extends Controller
     //
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $bookings = Booking::with('tour', 'user')->get(); // Include tour and user details
+        $tours = Tour::all();
+        $users = User::all();
+        return view('admin.dashboard', compact('bookings', 'tours', 'users'));
     }
     public function indexAccommodation()
     {

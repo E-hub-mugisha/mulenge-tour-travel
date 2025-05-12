@@ -27,8 +27,6 @@
 </div>
 <!-- tg-breadcrumb-area-end -->
 <div class="tg-location-area p-relative pb-125 pt-135">
-    <img class="tg-location-shape shape-3 d-none d-xl-block" src="{{ asset('assets/pages/img/location/shape-2.png') }}" alt="shape">
-    <img class="tg-testimonial-2-shape-1 p-absolute d-none d-lg-block" src="{{ asset('assets/pages/img/testimonial/shape.png') }}" alt="">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-9">
@@ -78,8 +76,6 @@
 
 <!-- tg-breadcrumb-area-end -->
 <div class="tg-location-area p-relative pb-125 pt-135">
-    <img class="tg-location-shape shape-3 d-none d-xl-block" src="{{ asset('assets/pages/img/location/shape-2.png') }}" alt="shape">
-    <img class="tg-testimonial-2-shape-1 p-absolute d-none d-lg-block" src="{{ asset('assets/pages/img/testimonial/shape.png') }}" alt="">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-9">
@@ -166,8 +162,6 @@
 
 <!-- tg-breadcrumb-area-end -->
 <div class="tg-location-area p-relative pb-125 pt-135">
-    <img class="tg-location-shape shape-3 d-none d-xl-block" src="{{ asset('assets/pages/img/location/shape-2.png') }}" alt="shape">
-    <img class="tg-testimonial-2-shape-1 p-absolute d-none d-lg-block" src="{{ asset('assets/pages/img/testimonial/shape.png') }}" alt="">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-9">

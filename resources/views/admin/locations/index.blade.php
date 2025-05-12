@@ -16,7 +16,7 @@
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addLocationModal">Add Location</button>
 
     <!-- Location Table -->
-    <table id="datatablesSimple" class="table">
+    <table id="dataTables-example" width="100%" class="table">
         <thead>
             <tr>
                 <th>Name</th>

@@ -18,7 +18,8 @@ class Tour extends Model
         'status',
         'trip_highlights',
         'included',
-        'exclude'
+        'exclude',
+        'destination_id',
     ];
 
     public function reviews()
@@ -46,5 +47,13 @@ class Tour extends Model
             ->where('id', '!=', $this->id) // Exclude the current tour
             ->take(4) // Limit the number of related tours displayed
             ->get();
+    }
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class, 'destination_id');
+    }
+    public function tourImages()
+    {
+        return $this->hasMany(TourImage::class);
     }
 }

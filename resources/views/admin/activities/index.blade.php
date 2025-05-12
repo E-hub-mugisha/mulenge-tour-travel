@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Activities | Mulenge Tours')
 @section('content')
 <div class="container">
     <h2>activites Management</h2>
@@ -13,7 +13,7 @@
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add activity</button>
 
     <!-- activites Table -->
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="dataTables-example" width="100%">
         <thead>
             <tr>
                 <th>#</th>

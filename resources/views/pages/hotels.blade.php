@@ -8,8 +8,6 @@
 </div>
 
 <div class="tg-booking-form-area p-relative z-index-1 tg-listing-booking-shadow">
-    <img class="tg-booking-4-shape d-none d-lg-block" src="{{ asset('assets/pages/img/booking/shape.png') }}" alt="shape">
-    <img class="tg-booking-4-shape-2 d-none d-lg-block" src="{{ asset('assets/pages/img/booking/shape-2.png') }}" alt="shape">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -177,219 +175,13 @@
 <div class="tg-listing-grid-area mb-85 pt-80">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-4 order-last order-lg-first">
-                <div class="tg-filter-sidebar mb-40 top-sticky">
-                    <div class="tg-filter-item">
-                        <div class="d-flex justify-content-between align-items-center mb-10">
-                            <h4 class="tg-filter-title mb-0">Search</h4>
-                            <a class="tg-filter-reset" href="#">Reset All</a>
-                        </div>
-                        <div class="tg-filter-search-form">
-                            <form action="#" class="p-relative">
-                                <input class="input" type="text" placeholder="Search Hotel">
-                                <button class="buttons" type="submit">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_397_1228)">
-                                            <path d="M13.2218 13.2222L10.5188 10.5192M12.1959 6.48705C12.1959 9.6402 9.63977 12.1963 6.48662 12.1963C3.33348 12.1963 0.777344 9.6402 0.777344 6.48705C0.777344 3.3339 3.33348 0.777771 6.48662 0.777771C9.63977 0.777771 12.1959 3.3339 12.1959 6.48705Z" stroke="#353844" stroke-width="1.575" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_397_1228">
-                                                <rect width="14" height="14" fill="white"></rect>
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
-                                </button>
-                            </form>
-                        </div>
-                        <span class="tg-filter-border mt-30 mb-25"></span>
-                        <h4 class="tg-filter-title mb-15">Property Type</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="australia">
-                                        <label for="australia" class="tg-label">Hotel</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="italy">
-                                        <label for="italy" class="tg-label">Resort</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="newyork">
-                                        <label for="newyork" class="tg-label">Apartments</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="switzerland">
-                                        <label for="switzerland" class="tg-label">Guest houses</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tg-filter-seemore">
-                            <span class="plus"><i class="fa-sharp fa-solid fa-plus"></i></span>
-                            <span class="more">See More</span>
-                        </div>
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-                        <div class="tg-filter-price-input">
-                            <h4 class="tg-filter-title mb-20">Price By Filter</h4>
-                            <div class="d-flex align-items-center">
-                                <input class="input" type="text" placeholder="Min Price">
-                                <span class="dvdr">
-                                    <svg width="14" height="4" viewBox="0 0 14 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 2H12" stroke="#353844" stroke-width="3" stroke-linecap="round"></path>
-                                    </svg>
-                                </span>
-                                <input class="input" type="text" placeholder="Max Price">
-                            </div>
-                        </div>
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-                        <h4 class="tg-filter-title mb-15">Amenities</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="amenities">
-                                        <label for="amenities" class="tg-label">Accepts Credit Cards</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="amenities-2">
-                                        <label for="amenities-2" class="tg-label">Car Parking</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="amenities-3">
-                                        <label for="amenities-3" class="tg-label">Free Coupons</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="amenities-4">
-                                        <label for="amenities-4" class="tg-label">Reservations</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="amenities-5">
-                                        <label for="amenities-5" class="tg-label">Restaurant</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-                        <h4 class="tg-filter-title mb-15">Top Reviews</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox">
-                                        <div class="tg-filter-review">
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox">
-                                        <div class="tg-filter-review">
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox">
-                                        <div class="tg-filter-review">
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox">
-                                        <div class="tg-filter-review">
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox">
-                                        <div class="tg-filter-review">
-                                            <span><i class="fa-solid fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                            <span class="bad-review"><i class="fa-light fa-star-sharp"></i></span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-                        <h4 class="tg-filter-title mb-15">Language</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="english">
-                                        <label for="english" class="tg-label">English</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="spanish">
-                                        <label for="spanish" class="tg-label">Spanish</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="bangla">
-                                        <label for="bangla" class="tg-label">French</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="turkish">
-                                        <label for="turkish" class="tg-label">Turkish</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-9 col-lg-8">
+            <div class="col-xl-12 col-lg-12">
                 <div class="tg-listing-item-box-wrap ml-10">
                     <div class="tg-listing-box-filter mb-15">
                         <div class="row align-items-center">
                             <div class="col-lg-5 col-md-5 mb-15">
                                 <div class="tg-listing-box-number-found">
-                                    <span>3,269 properties&nbsp;in Europe</span>
+                                    <span>Available &nbsp;Hotels</span>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 mb-15">
@@ -448,11 +240,11 @@
                     <div class="tg-listing-grid-item">
                         <div class="row list-card">
                             @foreach($hotels as $hotel)
-                            <div class="col-xxl-4 col-xl-6 col-lg-6 col-md-6 tg-grid-full">
+                            <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 tg-grid-full">
                                 <div class="tg-listing-card-item tg-listing-4-card-item mb-25">
                                     <div class="tg-listing-card-thumb tg-listing-2-card-thumb mb-15 fix p-relative">
                                         <a href="{{ route('pages.hotel-details.show', $hotel->id ) }}">
-                                            <img class="tg-card-border w-100" src="{{ asset('assets/pages/img/listing/listing-4/thumb-2.jpg') }}" alt="listing">
+                                            <img class="tg-card-border w-100" src="{{ asset('image/hotels/' . $hotel->images) }}" alt="listing">
                                             <span class="tg-listing-item-price-discount shape">{{ $hotel->status }}</span>
                                         </a>
                                         <div class="tg-listing-2-price">

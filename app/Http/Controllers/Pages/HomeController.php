@@ -6,24 +6,43 @@ use App\Http\Controllers\Controller;
 use App\Models\Destination;
 use App\Models\Hotel;
 use App\Models\HotelBooking;
+use App\Models\HotelImage;
 use App\Models\Location;
 use App\Models\Tour;
+use App\Models\TourTips;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
     //
     public function home()
     {
-        $locations = Location::all();
+        $locations = Destination::all();
         $tours = Tour::all();
-        return view('pages.home', compact('locations', 'tours'));
+        $hotels = Hotel::all();
+        $tips = TourTips::all()->take(3);
+        return view('pages.home', compact('locations', 'tours','hotels','tips'));
+    }
+    public function contact()
+    {
+        return view('pages.contact');
     }
     public function tourPage()
     {
         $tours = Tour::all();
         return view('pages.tour', compact('tours'));
+    }
+    public function tipsPage()
+    {
+        $tips = TourTips::all();
+        return view('pages.tips', compact('tips'));
+    }
+    public function tipsDetail($id)
+    {
+        $tip = TourTips::findOrFail($id);
+        return view('pages.tips-detail', compact('tip'));
     }
     public function destinations()
     {
@@ -47,7 +66,8 @@ class HomeController extends Controller
         $relatedHotels = Hotel::where('id', '!=', $hotel->id)
             ->limit(6) // Show 6 related Hotels
             ->get();
-        return view('pages.hotel-details', compact('hotel','relatedHotels'));
+        $hotelImages = HotelImage::where('hotel_id', $hotel->id)->get();
+        return view('pages.hotel-details', compact('hotel','relatedHotels','hotelImages'));
     }
     public function hotelBooking(Request $request)
     {
@@ -80,7 +100,39 @@ class HomeController extends Controller
         ]);
 
         // Return a response (redirect or JSON response)
-        return redirect()->back()
-                         ->with('success', 'Your booking was successful!');
+        return redirect()->route('hotel.payment.page', $booking->id);
+    }
+    public function payment(HotelBooking $booking)
+    {
+        return view('pages.payment', [
+            'email' => Auth::user()->email,
+            'amount' => $booking->total_price,
+            'tx_ref' => 'TRX_' . Str::random(10),
+            'booking_id' => $booking->id,
+            'public_key' => env('FLW_PUBLIC_KEY'),
+            'redirect_url' => route('payment.callback', ['booking_id' => $booking->id]),
+        ]);
+    }
+    public function paymentCallback(Request $request)
+    {
+        $booking_status = $request->booking_status;
+        $bookingId = $request->booking_id;
+    
+        if ($booking_status === 'successful') {
+            $tx_ref = $request->tx_ref;
+    
+            // (Optional) Verify transaction via API
+            // You can add: Http::withToken(env('FLW_SECRET_KEY'))->get('https://api.flutterwave.com/v3/transactions/....');
+    
+            HotelBooking::where('id', $bookingId)->update([
+                'booking_status' => 'confirmed'
+            ]);
+    
+            return redirect()->route('hotel.after.payment')->with('success', 'Payment successful and booking confirmed!');
+        } elseif ($booking_status === 'cancelled') {
+            return redirect()->route('hotel.after.payment')->with('error', 'Payment was cancelled.');
+        } else {
+            return redirect()->route('hotel.after.payment')->with('error', 'Payment failed. Please try again.');
+        }
     }
 }

@@ -9,8 +9,6 @@
 
 <!-- tg-breadcrumb-area-end -->
 <div class="tg-location-area p-relative pb-125 pt-135">
-    <img class="tg-location-shape shape-3 d-none d-xl-block" src="{{ asset('assets/pages/img/location/shape-2.png') }}" alt="shape">
-    <img class="tg-testimonial-2-shape-1 p-absolute d-none d-lg-block" src="{{ asset('assets/pages/img/testimonial/shape.png') }}" alt="">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-9">
@@ -44,7 +42,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s" data-wow-duration=".9s" style="visibility: visible; animation-duration: 0.9s; animation-delay: 0.3s; animation-name: fadeInUp;">
                 <div class="tg-location-3-wrap p-relative mb-30 tg-round-25">
                     <div class="tg-location-thumb tg-round-25">
-                        <img class="w-100 tg-round-25" src="{{ asset('assets/pages/img/location/location-2/thumb.jpg') }}" alt="location">
+                        <img class="w-100 tg-round-25" src="{{ asset('image/destinations/' . $destination->image) }}" alt="location">
                     </div>
                     <div class="tg-location-content text-center">
                         <span class="tg-location-time">05 Tours</span>

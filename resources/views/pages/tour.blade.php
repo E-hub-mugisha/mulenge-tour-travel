@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- tg-breadcrumb-area-start -->
-<div class="tg-breadcrumb-area tg-breadcrumb-spacing fix p-relative z-index-1 include-bg" data-background="assets/img/breadcrumb/breadcrumb.jpg">
+<div class="tg-breadcrumb-area tg-breadcrumb-spacing fix p-relative z-index-1 include-bg" data-background="{{ asset('assets/pages/img/breadcrumb/breadcrumb.jpg') }}">
     <div class="tg-hero-top-shadow"></div>
     <div class="tg-breadcrumb-shadow"></div>
     <div class="container">
@@ -194,101 +194,13 @@
 <div class="tg-listing-grid-area mb-85">
     <div class="container">
         <div class="row">
-            <div class="col-xl-3 col-lg-4 order-last order-lg-first">
-                <div class="tg-filter-sidebar mb-40 top-sticky">
-                    <div class="tg-filter-item">
-                        <h4 class="tg-filter-title mb-15">Destination</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                @foreach($locations as $location)
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="location-{{ $location->id }}">
-                                        <label for="location-{{ $location->id }}" class="tg-label">{{ $location->name }}</label>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-
-                        <h4 class="tg-filter-title mb-15">Activities</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                @foreach($activities as $activity)
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="activity-{{ $activity->id }}">
-                                        <label for="activity-{{ $activity->id }}" class="tg-label">{{ $activity->name }}</label>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-
-                        <h4 class="tg-filter-title mb-15">Accommodations</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                @foreach($accommodations as $accommodation)
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="accommodation-{{ $accommodation->id }}">
-                                        <label for="accommodation-{{ $accommodation->id }}" class="tg-label">{{ $accommodation->type_name }}</label>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-
-                        <h4 class="tg-filter-title mb-15">Transportation</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                @foreach($transportations as $transportation)
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="transportation-{{ $transportation->id }}">
-                                        <label for="transportation-{{ $transportation->id }}" class="tg-label">{{ $transportation->type_name }}</label>
-                                    </div>
-                                </li>
-                                @endforeach
-                            </ul>
-                        </div>
-
-                        <span class="tg-filter-border mt-25 mb-25"></span>
-
-                        <h4 class="tg-filter-title mb-15">Amenities</h4>
-                        <div class="tg-filter-list">
-                            <ul>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="credit-cards">
-                                        <label for="credit-cards" class="tg-label">Accepts Credit Cards</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="checkbox d-flex">
-                                        <input class="tg-checkbox" type="checkbox" id="car-parking">
-                                        <label for="car-parking" class="tg-label">Car Parking</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-xl-9 col-lg-8">
+            <div class="col-xl-12 col-lg-12">
                 <div class="tg-listing-item-box-wrap ml-10">
                     <div class="tg-listing-box-filter mb-15">
                         <div class="row align-items-center">
                             <div class="col-lg-5 col-md-5 mb-15">
                                 <div class="tg-listing-box-number-found">
-                                    <span>3,269 properties in Europe</span>
+                                    <span>Tour Packages Available</span>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 mb-15">
@@ -342,7 +254,7 @@
                                 <div class="tg-listing-card-item mb-30">
                                     <div class="tg-listing-card-thumb fix mb-15 p-relative">
                                         <a href="{{ route('pages.tour.details', $tour->id ) }}">
-                                            <img class="tg-card-border w-100" src="{{ asset('assets/pages/img/listing/listing-3.jpg')}}" alt="listing">
+                                            <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $tour->images) }}" alt="listing">
                                             <span class="tg-listing-item-price-discount shape">New</span>
                                         </a>
                                         <div class="tg-listing-item-wishlist">

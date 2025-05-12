@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AccommodationType;
 use App\Models\Activity;
+use App\Models\Destination;
+use App\Models\TourImage;
 use App\Models\TransportationType;
+use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
@@ -25,8 +28,8 @@ class TourController extends Controller
         $activities = Activity::all();
         $accommodations = AccommodationType::all();
         $transportations = TransportationType::all();
-
-        return view('admin.tours.create', compact('activities', 'accommodations', 'transportations'));
+        $destinations = Destination::all();
+        return view('admin.tours.create', compact('activities', 'accommodations', 'transportations', 'destinations'));
     }
 
     // Store a new tour
@@ -46,6 +49,7 @@ class TourController extends Controller
             'activities' => 'required|array',
             'accommodations' => 'required|array',
             'transportation' => 'required|array',
+            'destination_id' => 'required',
         ]);
 
         // Create the tour
@@ -59,6 +63,7 @@ class TourController extends Controller
             'included' => str_replace("\n", '|', trim($request->input('included'))),
             'exclude' => str_replace("\n", '|', trim($request->input('exclude'))),
             'status' => $request->status,
+            'destination_id' => $request->destination_id
         ]);
 
         // Associate selected activities, accommodations, and transportation with the tour
@@ -73,7 +78,11 @@ class TourController extends Controller
     public function edit($id)
     {
         $tour = Tour::findOrFail($id);
-        return view('admin.tours.edit', compact('tour'));
+        $activities = Activity::all();
+        $accommodations = AccommodationType::all();
+        $transportations = TransportationType::all();
+        $destinations = Destination::all();
+        return view('admin.tours.edit', compact('tour', 'activities', 'accommodations', 'transportations', 'destinations'));
     }
 
     // Update an existing tour
@@ -86,6 +95,7 @@ class TourController extends Controller
             'location' => 'required|string',
             'duration' => 'required|integer|min:1',
             'status' => 'required|string|in:active,inactive',
+            'destination_id' => 'required',
         ]);
 
         $tour = Tour::findOrFail($id);
@@ -101,5 +111,48 @@ class TourController extends Controller
         $tour->delete();
 
         return redirect()->route('admin.tours.index')->with('success', 'Tour deleted successfully!');
+    }
+
+    // Store multiple images
+    public function storeImageTour(Request $request, $tourId)
+    {
+        $request->validate([
+            'images' => 'required|mimes:jpeg,png,jpg,gif,svg', // Validate each image
+        ]);
+
+        $tour = Tour::findOrFail($tourId);
+
+        if ($images = $request->file('images')) {
+            $destinationPath = 'image/tours/';
+            $profileImage = date('YmdHis') . "." . $images->getClientOriginalExtension();
+            $images->move($destinationPath, $profileImage);
+            $tours['images'] = "$profileImage";
+        }
+        $tours = new TourImage();
+        $tours->tour_id = $tour->id;
+        $tours->images = $profileImage;
+        $tours->save();
+
+        return redirect()->back()->with('success', 'Images uploaded successfully.');
+    }
+
+    // Delete a specific image
+    public function destroyImageTour($id)
+    {
+        $image = TourImage::findOrFail($id);
+
+        // Delete image from storage
+        Storage::delete('public/' . $image->image_path);
+
+        // Delete record from database
+        $image->delete();
+
+        return redirect()->back()->with('success', 'Image deleted successfully.');
+    }
+
+    public function createImages($id)
+    {
+        $tour = Tour::findOrFail($id);
+        return view('admin.tours.upload_images', compact('tour'));
     }
 }

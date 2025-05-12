@@ -80,36 +80,13 @@
                     <div class="tg-tour-details-gallery-slider-wrap mb-40">
                         <div class="swiper-container tg-tour-details-gallery-active pb-20">
                             <div class="swiper-wrapper">
+                                @foreach( $hotelImages as $image)
                                 <div class="swiper-slide">
                                     <div class="tg-tour-details-gallery-thumb">
-                                        <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-big-1.jpg')}}" alt="">
+                                        <img class="w-100" src="{{ asset('image/hotels/' . $image->images) }}" alt="">
                                     </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="tg-tour-details-gallery-thumb">
-                                        <img class="w-100" src="{{ asset('assets/pages/img/blog/sidebar/standard.jpg')}}" alt="">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tg-tour-details-gallery-thumb">
-                                        <img class="w-100" src="{{ asset('assets/pages/img/blog/sidebar/standard-2.jpg')}}" alt="">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tg-tour-details-gallery-thumb">
-                                        <img class="w-100" src="{{ asset('assets/pages/img/blog/sidebar/standard-3.jpg')}}" alt="">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tg-tour-details-gallery-thumb">
-                                        <img class="w-100" src="{{ asset('assets/pages/img/blog/sidebar/standard-4.jpg')}}" alt="">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="tg-tour-details-gallery-thumb">
-                                        <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-big-6.jpg')}}" alt="">
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="tg-tour-details-gallery-navigation">
                                 <button class="tg-tour-details-gallery-prev">
@@ -128,36 +105,13 @@
                             <div class="col-lg-12">
                                 <div class="swiper-container tg-tour-details-gallery-thumb-active p-relative">
                                     <div class="swiper-wrapper">
+                                        @foreach( $hotelImages as $image)
                                         <div class="swiper-slide">
                                             <div class="tg-tour-details-gallery-thumb">
-                                                <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-1.jpg')}}" alt="">
+                                                <img class="w-100" src="{{ asset('image/hotels/' . $image->images) }}" alt="">
                                             </div>
                                         </div>
-                                        <div class="swiper-slide">
-                                            <div class="tg-tour-details-gallery-thumb">
-                                                <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-2.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tg-tour-details-gallery-thumb">
-                                                <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-3.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tg-tour-details-gallery-thumb">
-                                                <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-4.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tg-tour-details-gallery-thumb">
-                                                <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-5.jpg')}}" alt="">
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="tg-tour-details-gallery-thumb">
-                                                <img class="w-100" src="{{ asset('assets/pages/img/tour-details/details-2/slider-1.jpg')}}" alt="">
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -288,99 +242,12 @@
                         </div>
 
                         <div class="tg-tour-about-map tg-tour-about-2-inner mb-40">
-                            <h4 class="tg-tour-about-title mb-15">{{ $hotel->location }} Location on map</h4>
-                            <p class="text-capitalize lh-28">Castle in one day is next to impossible. Designed specifically for trave arelimited time in London
-                                ws you to check off a range of southern England‘s are historical</p>
+                            <h4 class="tg-tour-about-title mb-15">Location on map</h4>
                             <div class="tg-tour-about-map h-100">
                                 <iframe class="gmap_iframe h-100 w-100" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q={{$hotel->address}}&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
-                        <div class="tg-tour-about-review-wrap mb-45">
-                            <h4 class="tg-tour-about-title mb-15">Customer Reviews</h4>
-                            <p class="text-capitalize lh-28 mb-20">Castle in one day is next to impossible. Designed specifically for trave arelimited time in London, this tour
-                                ws you to check off a range of southern England‘s are historical</p>
-                            <div class="tg-tour-about-review">
-                                <div class="head-reviews">
-                                    <div class="review-left">
-                                        <div class="review-info-inner">
-                                            <h2>4.9</h2>
-                                            <span>Excellent</span>
-                                            <p>Based On 1582 Reviews</p>
-                                        </div>
-                                    </div>
-                                    <div class="review-right">
-                                        <div class="review-progress">
-                                            <div class="item-review-progress">
-                                                <div class="text-rv-progress">
-                                                    <p>Location</p>
-                                                </div>
-                                                <div class="bar-rv-progress">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 60%"> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-avarage">
-                                                    <p>4/5</p>
-                                                </div>
-                                            </div>
-                                            <div class="item-review-progress">
-                                                <div class="text-rv-progress">
-                                                    <p>Amenities</p>
-                                                </div>
-                                                <div class="bar-rv-progress">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 65%"> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-avarage">
-                                                    <p>4/5</p>
-                                                </div>
-                                            </div>
-                                            <div class="item-review-progress">
-                                                <div class="text-rv-progress">
-                                                    <p>Services</p>
-                                                </div>
-                                                <div class="bar-rv-progress">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 70%"> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-avarage">
-                                                    <p>4/5</p>
-                                                </div>
-                                            </div>
-                                            <div class="item-review-progress">
-                                                <div class="text-rv-progress">
-                                                    <p>Price</p>
-                                                </div>
-                                                <div class="bar-rv-progress">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 80%"> </div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-avarage">
-                                                    <p>3.5/5</p>
-                                                </div>
-                                            </div>
-                                            <div class="item-review-progress mb-0">
-                                                <div class="text-rv-progress">
-                                                    <p>Rooms</p>
-                                                </div>
-                                                <div class="bar-rv-progress">
-                                                    <div class="progress">
-                                                        <div class="progress-bar" style="width: 85%"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="text-avarage">
-                                                    <p>5/5</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                       
                     </div>
                 </div>
             </div>
@@ -486,7 +353,6 @@
 
 <!-- tg-listing-area-start -->
 <div class="tg-listing-area pt-90 pb-115 p-relative z-index-9">
-    <img class="tg-listing-3-shape tg-listing-4-shape d-none d-xl-block" src="{{ asset('assets/pages/img/banner/banner-2/shape.png') }}" alt="">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-9">

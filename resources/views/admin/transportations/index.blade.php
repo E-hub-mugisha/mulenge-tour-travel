@@ -13,7 +13,7 @@
     <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add transportation</button>
 
     <!-- transportations Table -->
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="dataTables-example" width="100%">
         <thead>
             <tr>
                 <th>#</th>

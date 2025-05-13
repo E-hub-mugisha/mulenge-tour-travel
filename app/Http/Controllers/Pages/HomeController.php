@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Destination;
 use App\Models\Hotel;
 use App\Models\HotelBooking;
@@ -31,18 +32,23 @@ class HomeController extends Controller
     }
     public function tourPage()
     {
-        $tours = Tour::all();
+        $tours = Tour::simplePaginate(6);
         return view('pages.tour', compact('tours'));
     }
     public function tipsPage()
     {
-        $tips = TourTips::all();
+        $tips = TourTips::simplePaginate(6);
         return view('pages.tips', compact('tips'));
     }
     public function tipsDetail($id)
     {
         $tip = TourTips::findOrFail($id);
-        return view('pages.tips-detail', compact('tip'));
+        $relatedTips = TourTips::where('id', '!=', $tip->id)
+            ->limit(3) // Show 3 related tips
+            ->get();
+
+        $categories = Category::all();
+        return view('pages.tips-detail', compact('tip', 'relatedTips', 'categories'));
     }
     public function destinations()
     {

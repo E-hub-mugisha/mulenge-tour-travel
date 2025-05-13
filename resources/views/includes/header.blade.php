@@ -2,7 +2,7 @@
     <div class="tg-header__area tg-header-tu-menu tg-header-lg-space z-index-999 tg-transparent" id="header-sticky">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-xxl-9 col-xl-8 col-lg-8 col-5">
+                <div class="col-xxl-10 col-xl-9 col-lg-9 col-6">
                     <div class="tgmenu__wrap d-flex align-items-center">
                         <div class="logo mr-25">
                             <a class="logo-1" href="{{ route('pages.home') }}">
@@ -34,7 +34,7 @@
                         </nav>
                     </div>
                 </div>
-                <div class="col-xxl-3 col-xl-4 col-lg-4 col-7">
+                <div class="col-xxl-2 col-xl-3 col-lg-3 col-6">
                     <div class="tg-menu-right-action d-flex align-items-center justify-content-end">
                         
 

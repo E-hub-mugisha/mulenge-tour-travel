@@ -388,7 +388,15 @@
                             <div class="tg-listing-card-item tg-listing-4-card-item mb-25">
                                 <div class="tg-listing-card-thumb tg-listing-2-card-thumb mb-15 fix p-relative">
                                     <a href="{{ route('pages.tour.details', $tour->id) }}">
-                                        <img class="tg-card-border w-100" src="{{ asset('assets/pages/img/listing/listing-4/thumb-2.jpg') }}" alt="{{ $tour->title }}">
+                                        @php
+                            $image = \App\Models\TourImage::where('tour_id', $tour->id)->first();
+                            @endphp
+
+                            @if ($image)
+                            <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $image->images) }}" alt="listing">
+                            @else
+                            <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                            @endif
                                         @if($tour->is_new)
                                         <span class="tg-listing-item-price-discount shape">New</span>
                                         @endif

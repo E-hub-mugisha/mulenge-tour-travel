@@ -71,7 +71,7 @@
             Tour Bookings
         </div>
         <div class="card-body">
-            <table id="datatablesSimple">
+            <table class="table table-hover" id="dataTables-example" width="100%">
                 <thead>
                     <tr>
                         <th>Tour Name</th>

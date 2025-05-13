@@ -198,4 +198,12 @@ class HotelController extends Controller
         $hotelBookings = HotelBooking::all(); // Include tour and user details
         return view('admin.hotels.hotel-bookings', compact('hotelBookings'));
     }
+    public function confirmBooking($id)
+    {
+        $hotelBooking = HotelBooking::findOrFail($id);
+        $hotelBooking->booking_status = 'confirmed';
+        $hotelBooking->save();
+
+        return redirect()->back()->with('success', 'Hotel booking confirmed successfully.');
+    }
 }

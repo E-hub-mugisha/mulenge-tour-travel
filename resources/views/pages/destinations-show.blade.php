@@ -60,7 +60,11 @@
             <div class="col-lg-3 col-md-6 col-sm-6 wow fadeInUp" data-wow-delay=".3s" data-wow-duration=".9s" style="visibility: visible; animation-duration: 0.9s; animation-delay: 0.3s; animation-name: fadeInUp;">
                 <div class="tg-location-3-wrap p-relative mb-30 tg-round-25">
                     <div class="tg-location-thumb tg-round-25">
-                        <img class="w-100 tg-round-25" src="{{ asset('assets/pages/img/location/location-2/thumb.jpg') }}" alt="location">
+                        @if ($location->images)
+                        <img class="tg-card-border w-100" src="{{ asset('image/destinations/' . $location->images) }}" alt="listing">
+                        @else
+                        <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                        @endif
                     </div>
                     <div class="tg-location-content text-center">
                         <span class="tg-location-time">05 Tours</span>
@@ -84,25 +88,6 @@
                     <h2 class="mb-15 text-capitalize wow fadeInUp" data-wow-delay=".5s" data-wow-duration=".9s" style="visibility: visible; animation-duration: 0.9s; animation-delay: 0.5s; animation-name: fadeInUp;">Popular Travel Tours <br>Available in {{ $destination->name }}</h2>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="tg-location-3-btn text-end wow fadeInUp mb-40" data-wow-delay=".6s" data-wow-duration=".9s" style="visibility: visible; animation-duration: 0.9s; animation-delay: 0.6s; animation-name: fadeInUp;">
-                    <a href="map-listing.html" class="tg-btn tg-btn-gray tg-btn-switch-animation">
-                        <span class="d-flex align-items-center justify-content-center">
-                            <span class="btn-text">All Locations</span>
-                            <span class="btn-icon ml-5">
-                                <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.0017 8.00001H19.9514M19.9514 8.00001L12.9766 1.02515M19.9514 8.00001L12.9766 14.9749" stroke="currentColor" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </span>
-                            <span class="btn-icon ml-5">
-                                <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.0017 8.00001H19.9514M19.9514 8.00001L12.9766 1.02515M19.9514 8.00001L12.9766 14.9749" stroke="currentColor" stroke-width="1.77778" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </span>
-                        </span>
-                    </a>
-                </div>
-            </div>
         </div>
         <div class="row">
             @foreach($destination->tours as $tour)
@@ -110,7 +95,15 @@
                 <div class="tg-listing-card-item mb-30">
                     <div class="tg-listing-card-thumb fix mb-15 p-relative">
                         <a href="{{ route('pages.tour.details', $tour->id ) }}">
-                            <img class="tg-card-border w-100" src="{{ asset('assets/pages/img/listing/listing-3.jpg')}}" alt="listing">
+                            @php
+                            $image = \App\Models\TourImage::where('tour_id', $tour->id)->first();
+                            @endphp
+
+                            @if ($image)
+                            <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $image->images) }}" alt="listing">
+                            @else
+                            <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                            @endif
                             <span class="tg-listing-item-price-discount shape">New</span>
                         </a>
                         <div class="tg-listing-item-wishlist">

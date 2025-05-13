@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- tg-hero-area-start -->
-<div class="tg-hero-area tg-hero-tu-wrapper include-bg" data-background="{{ asset('assets/pages/img/hero/tu/banner.jpg') }}">
+<div class="tg-hero-area tg-hero-tu-wrapper include-bg" data-background="{{ asset('image/tours/default.jpg') }}">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10">
@@ -90,7 +90,11 @@
                         <div class="swiper-slide">
                             <div class="tg-location-3-wrap  tg-location-su-wrap  p-relative mb-30 tg-round-25">
                                 <div class="tg-location-thumb tg-round-25">
-                                    <img class="w-100 tg-round-25" src="{{ asset('image/destinations/' . $location->image) }}" alt="location">
+                                    @if ($location->image)
+                                    <img class="tg-card-border w-100" src="{{ asset('image/destinations/' . $location->image) }}" alt="listing">
+                                    @else
+                                    <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                                    @endif
                                 </div>
                                 <div class="tg-location-content tg-location-su-content">
                                     <div class="content">
@@ -134,7 +138,15 @@
                 <div class="tg-listing-card-item tg-listing-su-card-item mb-25">
                     <div class="tg-listing-card-thumb fix mb-25 p-relative">
                         <a href="{{ route('pages.tour.details', $tour->id ) }}">
-                            <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $tour->image) }}" alt="listing">
+                            @php
+                            $image = \App\Models\TourImage::where('tour_id', $tour->id)->first();
+                            @endphp
+
+                            @if ($image)
+                            <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $image->images) }}" alt="listing">
+                            @else
+                            <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                            @endif
                             <span class="tg-listing-item-price-discount">Featured</span>
                         </a>
                         <div class="tg-listing-item-wishlist">
@@ -202,38 +214,6 @@
 </div>
 <!-- tg-listing-area-end -->
 
-<!-- tg-ads-area-start -->
-<div class="tg-ads-area tg-ads-su-space p-relative z-index-1">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".6s">
-                <div class="tg-ads-wrap-3 tg-ads-su-wrapper include-bg fix" data-background="{{ asset('assets/pages/img/ads/su/bg.jpg')}}">
-                    <div class="tg-ads-content-2">
-                        <div class="tg-ads-discount-inner mb-20">
-                            <span class="travel">Travel Feni</span>
-                            <div class="tg-ads-discount d-flex align-items-center">
-                                <h2 class="mb-0 mr-5">25%</h2>
-                                <div>
-                                    <h3 class="mb-0">Extra</h3>
-                                    <span>Discount</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tg-ads-btn">
-                            <a href="tour-details.html" class="tg-btn">Book NOw</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 mb-30 wow fadeInUp" data-wow-delay=".6s" data-wow-duration=".6s">
-                <div class="tg-ads-su-wrap h-100">
-                    <img class="w-100 h-100" src="{{ asset('assets/pages/img/ads/su/banner.jpg')}}" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- tg-ads-area-end -->
 
 <div class="tg-listing-area tg-grey-bg pt-140 pb-130 p-relative z-index-9">
     <img class="tg-listing-2-shape d-none d-sm-block" src="assets/img/listing/listing-2/shape-1.png" alt="">
@@ -336,7 +316,7 @@
             <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInLeft" data-wow-delay=".4s" data-wow-duration=".9s">
                 <div class="tg-blog-item tg-blog-2-item mb-25">
                     <div class="tg-blog-thumb p-relative fix mb-25">
-                        <a href="{{ route('pages.tips.show', $tip->id ) }}"><img class="w-100" src="{{ asset('assets/pages/img/blog/blog-2/blog-1.jpg')}}" alt="blog"></a>
+                        <a href="{{ route('pages.tips.show', $tip->id ) }}"><img class="w-100" src="{{ asset('image/tips/' . $tip->images) }}" alt="blog"></a>
                         <span class="tg-blog-tag p-absolute">{{ $tip->category->name }}</span>
                     </div>
                     <div class="tg-blog-content  p-relative">

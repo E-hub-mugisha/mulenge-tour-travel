@@ -66,9 +66,9 @@
                                                 <div class="form-group">
                                                     <label for="role">Role</label>
                                                     <select id="role" name="role" class="form-control" required>
-                                                        <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
-                                                        <option value="staff" {{ $user->role == 'staff' ? 'selected' : '' }}>Staff</option>
-                                                        <option value="customer" {{ $user->role == 'customer' ? 'selected' : '' }}>Customer</option>
+                                                        <option value="admin">Admin</option>
+                            <option value="staff">Staff</option>
+                            <option value="customer">Customer</option>
                                                     </select>
                                                 </div>
                                             </div>

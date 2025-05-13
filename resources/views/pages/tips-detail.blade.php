@@ -9,7 +9,7 @@
                 <div class="tg-blog-details-wrap tg-blog-lg-spacing mr-50 mb-50">
                     <div class="tg-blog-standard-item mb-35">
                         <div class="tg-blog-standard-thumb mb-15">
-                            <img class="w-100" src="assets/img/blog/sidebar/standard-3.jpg" alt="blog">
+                            <img class="w-100" src="{{ asset('image/tips/' . $tip->images) }}" alt="blog">
                         </div>
                         <div class="tg-blog-standard-content">
                             <div class="tg-blog-standard-date mb-10">
@@ -37,54 +37,12 @@
                             <p>{{ $tip->content }}</p>
                         </div>
                     </div>
-                    <div class="tg-blog-video-list mb-25">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-12 col-md-5">
-                                <div class="tg-blog-details-video p-relative mb-30">
-                                    <img class="w-100" src="assets/img/blog/details/video.jpg" alt="video">
-                                    <div class="tg-tour-details-video-inner text-center">
-                                        <a class="tg-video-play popup-video tg-pulse-border" href="https://www.youtube.com/watch?v=sY2bdbsy3rg">
-                                            <span class="p-relative z-index-11">
-                                                <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M17.3616 8.34455C19.0412 9.31425 19.0412 11.7385 17.3616 12.7082L4.13504 20.3445C2.45548 21.3142 0.356021 20.1021 0.356021 18.1627L0.356022 2.89C0.356022 0.950609 2.45548 -0.261512 4.13504 0.708185L17.3616 8.34455Z" fill="currentColor"></path>
-                                                </svg>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-7 col-lg-12 col-md-7">
-                                <div class="tg-blog-details-video-content ml-15 mb-30">
-                                    <h3>Tips For Building Future</h3>
-                                    <p class="tg-blog-para lh-28 mb-20">Seorem Ipsum is simply dummy t the printing and typese
-                                        tting industry. Lorem Ipsum has been industr.</p>
-                                    <div class="tg-blog-details-video-list">
-                                        <ul>
-                                            <li>
-                                                <span><i class="fa-sharp fa-solid fa-check"></i></span>
-                                                <p>Etiam porta sem malesuada euismod.</p>
-                                            </li>
-                                            <li>
-                                                <span><i class="fa-sharp fa-solid fa-check"></i></span>
-                                                <p>porta sem area Product</p>
-                                            </li>
-                                            <li>
-                                                <span><i class="fa-sharp fa-solid fa-check"></i></span>
-                                                <p>Service tiam porta sem malesuada</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <p class="tg-blog-para lh-28">Seorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been industry tandard when an unknown printer took a galley.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="tg-blog-details-tag mb-40 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="tg-blog-sidebar-tag-list d-flex flex-wrap align-items-center">
                             <h5 class="tg-blog-sidebar-title mr-10">Tags:</h5>
                             <ul>
-                                <li><a href="#">Bath Cleaning</a></li>
-                                <li><a href="#">Cleaning</a></li>
+                                <li><a href="#">Travelling</a></li>
+                                <li><a href="#">Tour</a></li>
                             </ul>
                         </div>
                         <div class="tg-blog-details-social mb-10">
@@ -141,125 +99,33 @@
                         <h5 class="tg-blog-sidebar-title mb-5">Categories</h5>
                         <div class="tg-blog-categories-list">
                             <ul>
+                                @foreach ($categories as $category)
                                 <li>
-                                    <span>Activity</span>
-                                    <span>(15)</span>
-                                </li>
+                                    <a href="#">{{ $category->name }}</a>
+                                    <span>({{ $category->posts_count }})</span>
                                 <li>
-                                    <span>Destinations</span>
-                                    <span>(44)</span>
-                                </li>
-                                <li>
-                                    <span>Beach Tour</span>
-                                    <span>(11)</span>
-                                </li>
-                                <li>
-                                    <span>City Tour</span>
-                                    <span>(22)</span>
-                                </li>
-                                <li>
-                                    <span>Flight</span>
-                                    <span>(15)</span>
-                                </li>
-                                <li>
-                                    <span>Lifestyle</span>
-                                    <span>(15)</span>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="tg-blog-post tg-blog-sidebar-box mb-40">
                         <h5 class="tg-blog-sidebar-title mb-25">Recent Posts</h5>
+                        @foreach ($relatedTips as $tip)
                         <div class="tg-blog-post-item d-flex align-items-center mb-30">
                             <div class="tg-blog-post-thumb mr-15">
-                                <img src="assets/img/blog/sidebar/post-2.jpg" alt="post">
+                                <img src="{{ asset('image/tips/' . $tip->images) }}" alt="post">
                             </div>
                             <div class="tg-blog-post-content w-100">
-                                <h4 class="tg-blog-post-title mb-5"><a href="blog-details.html">Europe’s finest and most scenic</a></h4>
+                                <h4 class="tg-blog-post-title mb-5"><a href="{{ route('pages.tips.show', $tip->id ) }}">{{ $tip->title }}</a></h4>
                                 <span class="tg-blog-post-date">
                                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.76501 0.777832V3.26675M4.23413 0.777832V3.26675M0.777344 5.75554H13.2218M2.16006 2.02217H11.8391C12.6027 2.02217 13.2218 2.57933 13.2218 3.26662V11.9778C13.2218 12.6651 12.6027 13.2223 11.8391 13.2223H2.16006C1.39641 13.2223 0.777344 12.6651 0.777344 11.9778V3.26662C0.777344 2.57933 1.39641 2.02217 2.16006 2.02217Z" stroke="#560CE3" stroke-width="0.977778" stroke-linecap="round" stroke-linejoin="round"></path>
                                     </svg>
-                                    24th Sep, 2024
+                                    {{ $tip->created_at }}
                                 </span>
                             </div>
                         </div>
-                        <div class="tg-blog-post-item d-flex align-items-center mb-30">
-                            <div class="tg-blog-post-thumb mr-15">
-                                <img src="assets/img/blog/sidebar/post-3.jpg" alt="post">
-                            </div>
-                            <div class="tg-blog-post-content w-100">
-                                <h4 class="tg-blog-post-title mb-5"><a href="blog-details.html">The 5 best hikes around the world</a></h4>
-                                <span class="tg-blog-post-date">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.76501 0.777832V3.26675M4.23413 0.777832V3.26675M0.777344 5.75554H13.2218M2.16006 2.02217H11.8391C12.6027 2.02217 13.2218 2.57933 13.2218 3.26662V11.9778C13.2218 12.6651 12.6027 13.2223 11.8391 13.2223H2.16006C1.39641 13.2223 0.777344 12.6651 0.777344 11.9778V3.26662C0.777344 2.57933 1.39641 2.02217 2.16006 2.02217Z" stroke="#560CE3" stroke-width="0.977778" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                    26th Sep, 2024
-                                </span>
-                            </div>
-                        </div>
-                        <div class="tg-blog-post-item d-flex align-items-center mb-30">
-                            <div class="tg-blog-post-thumb mr-15">
-                                <img src="assets/img/blog/sidebar/post-4.jpg" alt="post">
-                            </div>
-                            <div class="tg-blog-post-content w-100">
-                                <h4 class="tg-blog-post-title mb-5"><a href="blog-details.html">The Surfing Man Will Blow Your Mind</a></h4>
-                                <span class="tg-blog-post-date">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.76501 0.777832V3.26675M4.23413 0.777832V3.26675M0.777344 5.75554H13.2218M2.16006 2.02217H11.8391C12.6027 2.02217 13.2218 2.57933 13.2218 3.26662V11.9778C13.2218 12.6651 12.6027 13.2223 11.8391 13.2223H2.16006C1.39641 13.2223 0.777344 12.6651 0.777344 11.9778V3.26662C0.777344 2.57933 1.39641 2.02217 2.16006 2.02217Z" stroke="#560CE3" stroke-width="0.977778" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                    21th Sep, 2024
-                                </span>
-                            </div>
-                        </div>
-                        <div class="tg-blog-post-item d-flex align-items-center">
-                            <div class="tg-blog-post-thumb mr-15">
-                                <img src="assets/img/blog/sidebar/post.jpg" alt="post">
-                            </div>
-                            <div class="tg-blog-post-content w-100">
-                                <h4 class="tg-blog-post-title mb-5"><a href="blog-details.html">Girlfriend Getaway at Rosewood</a></h4>
-                                <span class="tg-blog-post-date">
-                                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.76501 0.777832V3.26675M4.23413 0.777832V3.26675M0.777344 5.75554H13.2218M2.16006 2.02217H11.8391C12.6027 2.02217 13.2218 2.57933 13.2218 3.26662V11.9778C13.2218 12.6651 12.6027 13.2223 11.8391 13.2223H2.16006C1.39641 13.2223 0.777344 12.6651 0.777344 11.9778V3.26662C0.777344 2.57933 1.39641 2.02217 2.16006 2.02217Z" stroke="#560CE3" stroke-width="0.977778" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                    26th Sep, 2024
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tg-blog-ads p-relative mb-40">
-                        <img class="w-100" src="assets/img/blog/sidebar/ads.jpg" alt="ads">
-                        <div class="tg-blog-ads-btn">
-                            <a href="tour-details.html" class="tg-btn tg-btn-transparent tg-btn-switch-animation">
-                                <span class="d-flex align-items-center justify-content-center">
-                                    <span class="btn-text">Book Now</span>
-                                    <span class="btn-icon ml-5">
-                                        <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1.00019 7.00005H16.16M16.16 7.00005L10.5801 1.42017M16.16 7.00005L10.5801 12.5799" stroke="#020615" stroke-width="1.42222" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </span>
-                                    <span class="btn-icon ml-5">
-                                        <svg width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1.00019 7.00005H16.16M16.16 7.00005L10.5801 1.42017M16.16 7.00005L10.5801 12.5799" stroke="#020615" stroke-width="1.42222" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="tg-blog-sidebar-tag tg-blog-sidebar-box">
-                        <h5 class="tg-blog-sidebar-title mb-25">Tags</h5>
-                        <div class="tg-blog-sidebar-tag-list">
-                            <ul>
-                                <li><a href="#">City Tour</a></li>
-                                <li><a href="#">Hiking</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Camping</a></li>
-                                <li><a href="#">Social Media</a></li>
-                                <li><a href="#">Travel</a></li>
-                                <li><a href="#">Traffic</a></li>
-                            </ul>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

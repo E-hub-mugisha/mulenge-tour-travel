@@ -10,9 +10,12 @@ use App\Models\Review;
 use App\Models\Tour;
 use App\Models\TourBooking;
 use App\Models\TourImage;
+use App\Models\TourPayment;
 use App\Models\TransportationType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class ToursController extends Controller
@@ -20,7 +23,7 @@ class ToursController extends Controller
     //
     public function tours()
     {
-        $tours = Tour::all();
+        $tours = Tour::simplePaginate(6);
         $locations = Tour::all();
         $activities = Activity::all();
         $accommodations = AccommodationType::all();
@@ -68,32 +71,68 @@ class ToursController extends Controller
             'amount' => $booking->total_price,
             'tx_ref' => 'TRX_' . Str::random(10),
             'booking_id' => $booking->id,
-            'public_key' => env('FLW_PUBLIC_KEY'),
-            'redirect_url' => route('payment.callback', ['booking_id' => $booking->id]),
+            'public_key' => env('FLW_PUBLIC_KEY')
         ]);
     }
-    public function paymentCallback(Request $request)
+
+    public function paymentTourCallback(Request $request)
     {
-        $status = $request->status;
-        $bookingId = $request->booking_id;
-    
-        if ($status === 'successful') {
-            $tx_ref = $request->tx_ref;
-    
-            // (Optional) Verify transaction via API
-            // You can add: Http::withToken(env('FLW_SECRET_KEY'))->get('https://api.flutterwave.com/v3/transactions/....');
-    
-            Booking::where('id', $bookingId)->update([
-                'status' => 'confirmed'
-            ]);
-    
-            return redirect()->route('after.payment')->with('success', 'Payment successful and booking confirmed!');
-        } elseif ($status === 'cancelled') {
-            return redirect()->route('after.payment')->with('error', 'Payment was cancelled.');
-        } else {
-            return redirect()->route('after.payment')->with('error', 'Payment failed. Please try again.');
+        $transactionId = $request->query('transaction_id');
+        $txRef = $request->query('tx_ref');
+
+        if (!$transactionId || !$txRef) {
+            return redirect()->route('after.payment')->with('error', 'Invalid payment callback data.');
         }
+
+        // Extract booking ID (prefix of tx_ref)
+        $bookingId = explode('-', $txRef)[0];
+
+        $booking = Booking::find($bookingId);
+        if (!$booking) {
+            return redirect()->route('after.payment')->with('error', 'Booking not found.');
+        }
+
+        // Prevent duplicate payment processing
+        if ($booking->status === 'paid') {
+            return redirect()->route('after.payment')->with('success', 'Payment already processed.');
+        }
+
+        // Verify transaction with Flutterwave
+        $response = Http::withToken(env('FLW_SECRET_KEY'))
+            ->get("https://api.flutterwave.com/v3/transactions/{$transactionId}/verify");
+
+        if ($response->failed()) {
+            Log::error('Flutterwave verification failed.', [
+                'transaction_id' => $transactionId,
+                'response' => $response->body(),
+            ]);
+            return redirect()->route('after.payment')->with('error', 'Could not verify payment. Please contact support.');
+        }
+
+        $data = $response->json()['data'] ?? [];
+
+        if (isset($data['status']) && $data['status'] === 'successful') {
+            // Save payment and update booking
+            $booking->update([
+                'status' => 'paid',
+                'updated_at' => now(),
+            ]);
+
+            TourPayment::create([
+                'user_id' => $booking->user_id,
+                'booking_id' => $booking->id,
+                'amount' => $data['amount'] ?? $booking->total_price,
+                'status' => 'success',
+                'transaction_id' => $transactionId,
+            ]);
+
+            return redirect()->route('after.payment')->with('success', 'Payment successful and booking confirmed!');
+        }
+
+        // If payment was cancelled or failed
+        return redirect()->route('after.payment')->with('error', 'Payment was not successful.');
     }
+
     public function storeReview(Request $request, $tourId)
     {
         $request->validate([

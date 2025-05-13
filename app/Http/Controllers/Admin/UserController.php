@@ -43,15 +43,21 @@ class UserController extends Controller
         return view('admin.users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $user->id,
-            'role' => 'required|in:admin,staff,customer',
+            'name' => 'required',
+            'email' => 'required',
+            'role' => 'required',
         ]);
 
-        $user->update($request->all());
+        $user = User::findOrFail($id);
+        
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role,
+        ]);
 
         return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
     }

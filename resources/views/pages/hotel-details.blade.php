@@ -341,7 +341,7 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="button" class="tg-btn tg-btn-switch-animation w-100" onclick="checkAuthBeforeSubmit()">Book Now</button>
+                        <button type="button" class="tg-btn tg-btn-switch-animation w-100" onclick="checkAuthBeforeSubmit()">Request a Book Now</button>
                     </form>
 
                 </div>

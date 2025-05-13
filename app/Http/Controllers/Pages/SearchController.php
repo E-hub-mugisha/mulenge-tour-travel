@@ -30,6 +30,6 @@ class SearchController extends Controller
         $hotels = $query->get();
 
 
-        return view('pages.hotel-search-results', compact('hotels'));
+        return view('pages.hotels', compact('hotels'));
     }
 }

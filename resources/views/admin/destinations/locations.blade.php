@@ -37,7 +37,11 @@
                                 <td>{{ $location->name }}</td>
                                 <td>{{ $location->description }}</td>
                                 <td>
-                                    <img src="{{ asset('image/destinations/' . $location->images ) }}" width="50">
+                                    @if ($location->images)
+                                    <img class="tg-card-border w-100" src="{{ asset('image/destinations/' . $location->images) }}" alt="listing" height="50" width="50">
+                                    @else
+                                    <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                                    @endif
                                 </td>
                                 <td>
                                     <!-- Edit Button -->

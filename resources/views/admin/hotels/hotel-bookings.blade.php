@@ -46,6 +46,7 @@
                                 <td>{{ $hotel->booking_status }}</td>
                                 <td>
                                     <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#showHotelBookingModal{{ $hotel->id }}">view detail</button>
+                                    <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#confirmBookingModal{{ $hotel->id }}">Confirm</button>
                                     <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBookingModal{{ $hotel->id }}">Delete</button>
                                 </td>
                             </tr>
@@ -79,6 +80,28 @@
                                 </div>
                             </div>
 
+                            <!-- confirm Confirmation Modal -->
+                            <div class="modal fade" id="confirmBookingModal{{ $hotel->id }}" tabindex="-1" aria-labelledby="confirmBookingModalLabel{{ $hotel->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="confirmBookingModalLabel{{ $hotel->id }}">Confirm Booking</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to confirm this booking?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <form action="{{ route('admin.HotelBookings.Confirm', $hotel->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <button type="submit" class="btn btn-success">Confirm</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- Delete Confirmation Modal -->
                             <div class="modal fade" id="deleteBookingModal{{ $hotel->id }}" tabindex="-1" aria-labelledby="deleteBookingModalLabel{{ $hotel->id }}" aria-hidden="true">
                                 <div class="modal-dialog">

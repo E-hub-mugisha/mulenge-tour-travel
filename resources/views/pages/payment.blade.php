@@ -67,24 +67,33 @@
     </div>
 
     <script>
-        document.getElementById('payBtn').addEventListener('click', function() {
-            FlutterwaveCheckout({
-                public_key: "{{ $public_key }}",
-                tx_ref: "{{ $tx_ref }}",
-                amount: 40,
-                currency: "RWF",
-                payment_options: "card, mobilemoneyrwanda",
-                redirect_url: "{{ $redirect_url }}",
-                customer: {
-                    email: "{{ $email }}",
-                },
-                customizations: {
-                    title: "Tour Booking Payment",
-                    description: "Payment for booking #{{ $booking_id }}",
-                },
-            });
+    document.getElementById('payBtn').addEventListener('click', function() {
+        const txRef = "{{ $booking_id }}-" + Date.now();
+
+        FlutterwaveCheckout({
+            public_key: "{{ $public_key }}",
+            tx_ref: txRef,
+            amount: 40,
+            currency: "RWF",
+            payment_options: "card, mobilemoneyrwanda",
+            customer: {
+                email: "{{ $email }}",
+            },
+            callback: function(data) {
+                const url = `/tour/payment/callback?transaction_id=${encodeURIComponent(data.transaction_id)}&status=${encodeURIComponent(data.status)}&tx_ref=${encodeURIComponent(data.tx_ref)}`;
+                window.location.href = url;
+            },
+            onclose: function() {
+                alert('Payment process was closed.');
+            },
+            customizations: {
+                title: "Tour Booking Payment",
+                description: "Payment for booking #{{ $booking_id }}",
+            },
         });
-    </script>
+    });
+</script>
+
 </body>
 
 </html>

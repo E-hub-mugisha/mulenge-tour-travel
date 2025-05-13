@@ -2,13 +2,18 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use App\Models\TourTip;
 
-class TourTipsTableSeeder extends Seeder
+class TourTipsSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
         $tips = [
@@ -91,4 +96,5 @@ class TourTipsTableSeeder extends Seeder
 
         DB::table('tour_tips')->insert($tips);
     }
+    
 }

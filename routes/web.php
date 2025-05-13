@@ -42,8 +42,9 @@ Route::get('/tour-tips', [HomeController::class, 'tipsPage'])->name('pages.tips'
 Route::get('/tour-tips/{id}', [HomeController::class, 'tipsDetail'])->name('pages.tips.show');
 
 Route::get('/payment/{booking}', [ToursController::class, 'payment'])->name('payment.page');
-Route::get('/payment/callback', [ToursController::class, 'paymentCallback'])->name('payment.callback');
+// Route::get('/payment/callback', [ToursController::class, 'paymentCallback'])->name('payment.callback');
 Route::get('/after/payment', [ToursController::class, 'afterPayment'])->name('after.payment');
+Route::get('/tour/payment/callback', [ToursController::class, 'paymentTourCallback'])->name('handlePayment.callback');
 
 
 Route::get('/dashboard', function () {
@@ -60,7 +61,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('admin/users', [UserController::class, 'index'])->name('admin.users.index');
     Route::post('admin/user/store', [UserController::class, 'store'])->name('admin.users.store');
-    Route::put('admin/user/upate/{id}', [UserController::class, 'update'])->name('admin.users.update');
+    Route::put('admin/user/update/{id}', [UserController::class, 'update'])->name('admin.users.update');
     Route::delete('admin/user/delete/{id}', [UserController::class, 'destroy'])->name('admin.users.delete');
 
     // tour routes
@@ -152,6 +153,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('admin/hotel/booking/upate/{id}', [HotelController::class, 'update'])->name('admin.HotelBookings.update');
     Route::delete('admin/hotel/booking/delete/{id}', [HotelController::class, 'destroy'])->name('admin.HotelBookings.destroy');
     Route::put('hotel/bookings/update-status{id}', [HotelController::class, 'updateStatus'])->name('admin.HotelBookingsUpdateStatus');
+    Route::put('hotel/bookings/confirmation/{id}', [HotelController::class, 'confirmBooking'])->name('admin.HotelBookings.Confirm');
 
     // category
     Route::get('/admin/categories', [TourTipsController::class, 'indexCategory'])->name('admin.category.index');

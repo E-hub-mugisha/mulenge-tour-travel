@@ -117,10 +117,6 @@
                         <label for="number_of_guests">Number of Guests</label>
                         <input type="number" name="number_of_guests" id="number_of_guests" class="form-control" required>
                     </div>
-                    <div class="form-group">
-                        <label for="total_price">Total Price</label>
-                        <input type="number" name="total_price" id="total_price" class="form-control" required>
-                    </div>
 
                     <button type="submit" class="btn btn-primary mt-3">Add Booking</button>
                 </form>

@@ -200,6 +200,11 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::delete('staff/booking/delete/{id}', [App\Http\Controllers\Staff\BookingController::class, 'destroy'])->name('staff.bookings.destroy');
     Route::put('bookings/update-status/{id}', [App\Http\Controllers\Staff\BookingController::class, 'updateStatus'])->name('staff.bookingsUpdateStatus');
 
+    Route::get('/staff/payments', [PaymentController::class, 'index'])->name('staff.payments.index');
+    Route::get('/staff/payment/{booking}', [App\Http\Controllers\Staff\BookingController::class, 'payment'])->name('staff.payments.page');
+    // Route::get('/payment/callback', [BookingController::class, 'paymentCallback'])->name('payment.callback');
+    Route::get('/staff/after/payment', [App\Http\Controllers\Staff\BookingController::class, 'afterPayment'])->name('staff.after.payment');
+    Route::get('/staff/tour/payment/callback', [App\Http\Controllers\Staff\BookingController::class, 'paymentTourCallback'])->name('staff.handlePayment.callback');
 
     // locations routes
     Route::get('staff/locations', [App\Http\Controllers\Staff\LocationController::class, 'index'])->name('staff.locations.index');

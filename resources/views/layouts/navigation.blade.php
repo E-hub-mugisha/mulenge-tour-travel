@@ -74,27 +74,27 @@
                 <div class="sb-sidenav-menu-heading">Interface</div>
                 <a class="nav-link" href="{{ route('staff.bookings.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                    📅 Bookings
+                    Bookings
                 </a>
                 <a class="nav-link" href="{{ route('staff.accommodations.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-bed"></i></div>
-                    🏨 Accommodations
+                    Accommodations
                 </a>
                 <a class="nav-link" href="{{ route('staff.activities.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
-                    🏃 Activities
+                    Activities
                 </a>
                 <a class="nav-link" href="{{ route('staff.transportations.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
-                    🚗 Transportations
+                    Transportations
                 </a>
                 <a class="nav-link" href="{{ route('staff.tours.index')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                    🏝️ Travel Packages
+                    Travel Packages
                 </a>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('staff.payments.index') }}">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    💰 Payments
+                    Tour Payments
                 </a>
             </div>
         </div>

@@ -2,8 +2,34 @@
 @section('title', 'Home | Mulenge')
 @section('content')
 
+<style>
+    .tg-hero-area::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        /* Adjust opacity here */
+        z-index: 1;
+    }
+
+    .tg-hero-area .tg-hero-content {
+        position: relative;
+        z-index: 2;
+        /* Ensure content is above overlay */
+    }
+    .tg-hero-area {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+</style>
 <!-- tg-hero-area-start -->
-<div class="tg-hero-area tg-hero-tu-wrapper include-bg" data-background="{{ asset('image/tours/default.jpg') }}">
+<div class="tg-hero-area tg-hero-tu-wrapper include-bg" style="position: relative;" data-background="{{ asset('image/tours/default.jpg') }}">
+    <div class="overlay"></div>
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-10">

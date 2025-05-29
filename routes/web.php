@@ -86,6 +86,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('admin/booking/delete/{id}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');
     Route::put('bookings/update-status{id}', [BookingController::class, 'updateStatus'])->name('admin.bookingsUpdateStatus');
 
+    Route::get('/admin/payment/{booking}', [BookingController::class, 'payment'])->name('admin.payment.page');
+    // Route::get('/payment/callback', [BookingController::class, 'paymentCallback'])->name('payment.callback');
+    Route::get('/admin/after/payment', [BookingController::class, 'afterPayment'])->name('admin.after.payment');
+    Route::get('/admin/tour/payment/callback', [BookingController::class, 'paymentTourCallback'])->name('admin.handlePayment.callback');
+
     // locations routes
     Route::get('admin/locations', [LocationController::class, 'index'])->name('admin.locations.index');
     Route::get('/admin/location/create', [LocationController::class, 'create'])->name('admin.locations.create');
@@ -194,7 +199,7 @@ Route::middleware(['auth', 'role:staff'])->group(function () {
     Route::put('staff/booking/upate/{id}', [App\Http\Controllers\Staff\BookingController::class, 'update'])->name('staff.bookings.update');
     Route::delete('staff/booking/delete/{id}', [App\Http\Controllers\Staff\BookingController::class, 'destroy'])->name('staff.bookings.destroy');
     Route::put('bookings/update-status/{id}', [App\Http\Controllers\Staff\BookingController::class, 'updateStatus'])->name('staff.bookingsUpdateStatus');
-    
+
 
     // locations routes
     Route::get('staff/locations', [App\Http\Controllers\Staff\LocationController::class, 'index'])->name('staff.locations.index');

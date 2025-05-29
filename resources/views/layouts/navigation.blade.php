@@ -57,6 +57,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                     Transportations
                 </a>
+                <a class="nav-link" href="{{ route('admin.category.index') }}"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>Tips Category</a>
+                <a class="nav-link" href="{{ route('admin.tour-tips.index') }}"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>Tour Tips</a>
+                <hr class="dropdown-divider" />
             </div>
         </div>
     </nav>
@@ -96,6 +99,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     Tour Payments
                 </a>
+                <a class="nav-link" href="{{ route('admin.category.index') }}"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>Tips Category</a>
+                <a class="nav-link" href="{{ route('admin.tour-tips.index') }}"><div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>Tour Tips</a>
+                <hr class="dropdown-divider" />
             </div>
         </div>
     </nav>

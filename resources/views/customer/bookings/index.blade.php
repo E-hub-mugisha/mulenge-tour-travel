@@ -32,7 +32,7 @@
                 <td>{{ $booking->booking_date }}</td>
                 <td>{{ $booking->status }}</td>
                 <td>
-                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#showBookingModal{{ $booking->id }}">view detail</button>
+                    <a href="{{ route('customers.booking.show', $booking->id )}}" class="btn btn-sm btn-info">view detail</a>
                     <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#rescheduleBookingModal{{ $booking->id }}">Reschedule</button>
                     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBookingModal{{ $booking->id }}">Cancel</button>
                 </td>
@@ -153,10 +153,6 @@
                     <div class="form-group">
                         <label for="number_of_guests">Number of Guests</label>
                         <input type="number" name="number_of_guests" id="number_of_guests" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="total_price">Total Price</label>
-                        <input type="number" name="total_price" id="total_price" class="form-control" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary mt-3">Add Booking</button>

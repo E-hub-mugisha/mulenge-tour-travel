@@ -268,6 +268,12 @@ Route::middleware(['auth', 'role:customer'])->group(function () {
     Route::get('/customer/payments', [CustomerController::class, 'bookingPayment'])->name('customers.payments.index');
     Route::put('/customer/payments/refund/{id}', [CustomerController::class, 'refundStatus'])->name('customers.payments.refund');
     Route::put('/customer/payment/cancel/{id}', [CustomerController::class, 'cancelStatus'])->name('customers.payments.cancel');
+
+    Route::get('/customer/payment/{booking}', [CustomerController::class, 'payment'])->name('customer.payments.page');
+    // Route::get('/payment/callback', [BookingController::class, 'paymentCallback'])->name('payment.callback');
+    Route::get('/customer/after/payment', [CustomerController::class, 'afterPayment'])->name('customer.after.payment');
+    Route::get('/customer/tour/payment/callback', [CustomerController::class, 'paymentTourCallback'])->name('customer.handlePayment.callback');
+
 });
 
 

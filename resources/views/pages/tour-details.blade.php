@@ -78,7 +78,7 @@
             <div class="col-xl-9 col-lg-8">
                 <div class="tg-tour-about-wrap mr-55">
                     <div class="tg-tour-details-gallery-slider-wrap mb-40">
-                    <div class="swiper-container tg-tour-details-gallery-active pb-20">
+                        <div class="swiper-container tg-tour-details-gallery-active pb-20">
                             <div class="swiper-wrapper">
                                 @foreach( $tourImages as $image)
                                 <div class="swiper-slide">
@@ -334,7 +334,6 @@
                         </div>
 
                         <div class="tg-tour-about-coast d-flex align-items-center flex-wrap justify-content-between mb-20">
-                            <span class="tg-tour-about-sidebar-title d-inline-block">Total Cost:</span>
                             <input hidden type="number" name="price" id="price" class="form-control" value="{{ $tour->price }}" required>
                         </div>
                         <!-- Submit Button -->
@@ -389,21 +388,20 @@
                                 <div class="tg-listing-card-thumb tg-listing-2-card-thumb mb-15 fix p-relative">
                                     <a href="{{ route('pages.tour.details', $tour->id) }}">
                                         @php
-                            $image = \App\Models\TourImage::where('tour_id', $tour->id)->first();
-                            @endphp
+                                        $image = \App\Models\TourImage::where('tour_id', $tour->id)->first();
+                                        @endphp
 
-                            @if ($image)
-                            <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $image->images) }}" alt="listing">
-                            @else
-                            <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
-                            @endif
+                                        @if ($image)
+                                        <img class="tg-card-border w-100" src="{{ asset('image/tours/' . $image->images) }}" alt="listing">
+                                        @else
+                                        <img class="tg-card-border w-100" src="{{ asset('image/tours/default.jpg') }}" alt="No image available">
+                                        @endif
                                         @if($tour->is_new)
                                         <span class="tg-listing-item-price-discount shape">New</span>
                                         @endif
                                     </a>
                                     <div class="tg-listing-2-price">
-                                        <span class="new">${{ $tour->price }}</span>
-                                        <span class="shift">/night</span>
+                                        <span class="new">From ${{ $tour->price }}</span>
                                     </div>
                                 </div>
                                 <div class="tg-listing-card-content p-relative">
@@ -426,14 +424,8 @@
                                             <span class="tg-listing-rating-percent">({{ $tour->reviews_count }} Reviews)</span>
                                     </div>
                                     <div class="tg-listing-avai d-flex align-items-center justify-content-between">
-                                        <a class="tg-listing-avai-btn" href="{{ route('pages.tour.details', $tour->id) }}">Check Availability</a>
-                                        <div class="tg-listing-item-wishlist">
-                                            <a href="#">
-                                                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10.5167 16.3416C10.2334 16.4416 9.76675 16.4416 9.48341 16.3416C7.06675 15.5166 1.66675 12.075 1.66675 6.24165C1.66675 3.66665 3.74175 1.58331 6.30008 1.58331C7.81675 1.58331 9.15841 2.31665 10.0001 3.44998C10.8417 2.31665 12.1917 1.58331 13.7001 1.58331C16.2584 1.58331 18.3334 3.66665 18.3334 6.24165C18.3334 12.075 12.9334 15.5166 10.5167 16.3416Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                            </a>
-                                        </div>
+                                        <a class="tg-listing-avai-btn" href="{{ route('pages.tour.details', $tour->id) }}">View Details</a>
+                                        
                                     </div>
                                 </div>
                             </div>

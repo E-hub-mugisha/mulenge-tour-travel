@@ -252,13 +252,7 @@ class CustomerController extends Controller
             'status' => 'pending',
         ]);
 
-        $payment = new TourPayment();
-        $payment->user_id = $booking->user_id;
-        $payment->booking_id = $booking->id;
-        $payment->amount = $booking->total_price;
-        $payment->status = 'pending';
-        $payment->save();
-
-        return redirect()->route('customers.payments.index')->with('success', 'Booking made successfully!');
+        return redirect()->route('customer.payments.page', $booking->id )->with('success', 'Booking made successfully!');
     }
+    
 }

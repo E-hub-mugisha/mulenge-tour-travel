@@ -54,23 +54,6 @@
                             <a href="#"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                     </div>
-                    <div class="tg-tour-about-cus-review-wrap tg-blog-details-review mb-25">
-                        <ul>
-                            <li class="mb-40">
-                                <div class="tg-tour-about-cus-review d-flex">
-                                    <div class="tg-tour-about-cus-review-thumb">
-                                        <img src="assets/img/blog/details/avatar.png" alt="avatar">
-                                    </div>
-                                    <div>
-                                        <div class="tg-tour-about-cus-name">
-                                            <span>Author</span>
-                                            <h6>{{ $tip->author->name }}</h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
             <div class="col-xl-3 col-lg-4">

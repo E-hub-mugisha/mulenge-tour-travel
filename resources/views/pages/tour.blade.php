@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="tg-breadcrumb-content text-center">
-                    <h2 class="tg-breadcrumb-title mb-15">Let’s Tour The World</h2>
+                    <h2 class="tg-breadcrumb-title mb-15">Let’s explore The World</h2>
                     <div class="tg-breadcrumb-list">
                         <span><a href="{{ route('pages.home')}}">Home</a></span>
                         <span class="dvdr"><i class="fa-sharp fa-solid fa-angle-right"></i></span>
@@ -29,14 +29,14 @@
         <div class="row">
             <div class="col-xl-12 col-lg-12">
                 <div class="tg-listing-item-box-wrap ml-10">
-                    <div class="tg-listing-box-filter mb-15">
+                    <div class="tg-listing-box-filter mb-15 mt-10">
                         <div class="row align-items-center">
-                            <div class="col-lg-5 col-md-5 mb-15">
+                            <div class="col-lg-5 col-md-5 mb-15 mt-5">
                                 <div class="tg-listing-box-number-found">
                                     <span>Tour Packages Available</span>
                                 </div>
                             </div>
-                            <div class="col-lg-7 col-md-7 mb-15">
+                            <div class="col-lg-7 col-md-7 mb-15 mt-5">
                                 <div class="tg-listing-box-view-type d-flex justify-content-end align-items-center">
 
                                     <div class="d-none d-sm-block">

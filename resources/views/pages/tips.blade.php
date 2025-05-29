@@ -12,7 +12,7 @@
                         <div class="col-xl-6 col-lg-12 col-md-6">
                             <div class="tg-blog-grid-item mb-30">
                                 <div class="tg-blog-standard-thumb mb-15">
-                                    <a href="{{ route('pages.tips.show', $tip->id ) }}"><img class="w-100" src="assets/img/blog/grid/grid.jpg" alt="blog"></a>
+                                    <a href="{{ route('pages.tips.show', $tip->id ) }}"><img class="w-100" src="{{ asset('image/tips/' . $tip->images) }}" alt="blog"></a>
                                 </div>
                                 <div class="tg-blog-standard-content">
                                     <h2 class="tg-blog-standard-title">

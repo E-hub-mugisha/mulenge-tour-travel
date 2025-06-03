@@ -20,21 +20,27 @@ class UserController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
-            'role' => 'required|in:admin,staff,customer',
-        ]);
+{
+    $request->validate([
+        'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'], // only letters and spaces
+        'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+                       'role' => 'required|in:admin,staff,customer',
+        'password' => [
+            'required',
+            'confirmed',
+            Password::min(8)
+                ->mixedCase() // at least one upper and one lower case
+                ->letters()   // ensure letters
+                ->numbers(),  // ensure numbers
+        ],
+    ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
-        ]);
-
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+        'role' => 'customer', // Default role
+    ]);
         return redirect()->route('admin.users.index')->with('success', 'User created successfully');
     }
 
@@ -46,10 +52,18 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'role' => 'required',
-        ]);
+        'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'], // only letters and spaces
+        'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+                       'role' => 'required|in:admin,staff,customer',
+        'password' => [
+            'required',
+            'confirmed',
+            Password::min(8)
+                ->mixedCase() // at least one upper and one lower case
+                ->letters()   // ensure letters
+                ->numbers(),  // ensure numbers
+        ],
+    ]);
 
         $user = User::findOrFail($id);
         
